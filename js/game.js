@@ -16,7 +16,7 @@ function Game(canvadId) {
       } */
       
       this.draw();
-      //this.moveAll();
+      this.move()
   
     }.bind(this), 1000 / this.fps);
   };
@@ -33,4 +33,8 @@ function Game(canvadId) {
   Game.prototype.draw = function() {
     this.background.draw();
     this.player.draw()
+  }
+
+  Game.prototype.move = function(){
+    this.player.move()
   }
