@@ -2,11 +2,11 @@ function Player(game) {
     this.game = game;
 
     this.x = this.game.canvas.width * 0.5;
-    this.y0 = this.game.canvas.height * 0.9;
+    this.y0 = this.game.canvas.height * 0.8;
     this.y = this.y0;
 
     this.img = new Image();
-    this.img.src = 'img/coche.jpg';
+    this.img.src = 'img/carraco.png';
     this.img.frames = 3;
     this.img.frameIndex = 0;
 
@@ -19,6 +19,7 @@ function Player(game) {
     this.vx = 1;
 
     this.ax = 5
+    this.life = 100
     
 
     this.setListeners();
@@ -32,17 +33,11 @@ Player.prototype.setListeners = function () {
     var LEFT_KEY = 37;
 
     document.onkeydown = function (event) {
-        console.log(event)
         if (event.keyCode === RIGHT_KEY) {
-            console.log(this.moveRight)
             this.moveRight = true;
-            console.log(this.moveRight)
-
         }
         if (event.keyCode === LEFT_KEY) {
-           console.log(this.moveLeft)
             this.moveLeft = true;
-           
         }
     }.bind(this);
 
@@ -51,9 +46,7 @@ Player.prototype.setListeners = function () {
             this.moveRight = false;
         }
         if (event.keyCode === LEFT_KEY)
-            console.log(this.moveLeft)
             this.moveLeft = false;
-            console.log(this.moveLeft)
     }.bind(this)
 }
 Player.prototype.move = function () {
@@ -64,3 +57,8 @@ Player.prototype.move = function () {
         this.x -= this.vx * this.ax
     }
 };
+
+Player.prototype.setLife = function(life){
+    this.life += life
+    console.log(this.life)
+}
