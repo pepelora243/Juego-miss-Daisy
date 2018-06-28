@@ -12,6 +12,7 @@ Game.prototype.start = function () {
   this.interval = setInterval(function () {
     this.clear();
 
+    $('p').text("score:" + this.gamePoints)
     console.log(this.gamePoints)
 
     this.framesCounter++;
@@ -22,13 +23,14 @@ Game.prototype.start = function () {
     if (this.framesCounter % 60 === 0) {
       this.gamePoints += 5
       console.log(this.gamePoints)
+
     }
     //niveles
     if (this.gamePoints > 50 && this.gamePoints < 75  ) {
       console.log("nivel1")
-      this.difficulty = 30
+      this.difficulty = 20
     } else if(this.gamePoints > 75 && this.gamePoints < 100) {
-      this.difficulty = 10
+      this.difficulty = 14
     } else if(this.gamePoints > 100)
       this.difficulty = 8
 
@@ -58,13 +60,17 @@ Game.prototype.stop = function () {
 }
 
 Game.prototype.gameOver = function () {
-  this.stop();
-  if (confirm("GAME OVER. Play again?")) {
-    this.reset();
-    this.start();
-  }
+  document.getElementById("game-over").style.display = "flex";
+  this.stop()
+  this.resetEvent()
 };
-
+Game.prototype.resetEvent = function() {
+  window.onkeydown = function(event) {
+    if (event.key == "Enter") {
+      window.location.reload();
+    }
+  };
+};
 Game.prototype.reset = function () {
   this.background = new Background(this);
   this.player = new Player(this);

@@ -1,4 +1,7 @@
 window.onload = function() {
-  var game = new Game("canvas");
-  game.start();
+  document.getElementById("start").onclick = function() {
+   var game = new Game("canvas",1);
+   document.getElementById("inicio").style.display = "none"
+   game.start()
+  }
 };

@@ -20,7 +20,7 @@ function Player(game) {
 
     this.ax = 5
     this.life = 100
-    
+
 
     this.setListeners();
 }
@@ -50,15 +50,15 @@ Player.prototype.setListeners = function () {
     }.bind(this)
 }
 Player.prototype.move = function () {
-    if (this.moveRight === true && this.x < this.game.canvas.width - (this.w)) {
-        this.x += this.vx * this.ax;
-    }
-    if (this.moveLeft === true && this.x >= 0)  {
-        this.x -= this.vx * this.ax
-    }
+        if (this.moveRight === true && this.x < this.game.canvas.width - (this.w)) {
+            if (this.x <= 460) this.x += this.vx * this.ax;
+        }
+        if (this.moveLeft === true && this.x >= 0) {
+            if (this.x >= 95) this.x -= this.vx * this.ax
+        }
 };
 
-Player.prototype.setLife = function(life){
+Player.prototype.setLife = function (life) {
     this.life += life
     console.log(this.life)
 }
