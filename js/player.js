@@ -7,8 +7,7 @@ function Player(game) {
 
     this.img = new Image();
     this.img.src = 'img/carraco.png';
-    this.img.frames = 3;
-    this.img.frameIndex = 0;
+
 
     this.w = 50;
     this.h = 75;
@@ -21,12 +20,14 @@ function Player(game) {
     this.ax = 5
     this.life = 100
 
+ 
 
     this.setListeners();
 }
 Player.prototype.draw = function () {
     this.game.ctx.drawImage(this.img, this.x, this.y, this.w, this.h)
 }
+
 
 Player.prototype.setListeners = function () {
     var RIGHT_KEY = 39;
@@ -50,15 +51,14 @@ Player.prototype.setListeners = function () {
     }.bind(this)
 }
 Player.prototype.move = function () {
-        if (this.moveRight === true && this.x < this.game.canvas.width - (this.w)) {
-            if (this.x <= 460) this.x += this.vx * this.ax;
-        }
-        if (this.moveLeft === true && this.x >= 0) {
-            if (this.x >= 95) this.x -= this.vx * this.ax
-        }
+    if (this.moveRight === true && this.x < this.game.canvas.width - (this.w)) {
+        if (this.x <= 460) this.x += this.vx * this.ax;
+    }
+    if (this.moveLeft === true && this.x >= 0) {
+        if (this.x >= 95) this.x -= this.vx * this.ax
+    }
 };
 
 Player.prototype.setLife = function (life) {
     this.life += life
-    console.log(this.life)
 }

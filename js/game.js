@@ -12,8 +12,7 @@ Game.prototype.start = function () {
   this.interval = setInterval(function () {
     this.clear();
 
-    $('p').text("score:" + this.gamePoints)
-    console.log(this.gamePoints)
+    $('.score span').text(this.gamePoints)
 
     this.framesCounter++;
     if (this.framesCounter > 1000) {
@@ -26,12 +25,12 @@ Game.prototype.start = function () {
 
     }
     //niveles
-    if (this.gamePoints > 50 && this.gamePoints < 75  ) {
+    if (this.gamePoints > 50 && this.gamePoints < 75) {
       console.log("nivel1")
       this.difficulty = 20
-    } else if(this.gamePoints > 75 && this.gamePoints < 100) {
+    } else if (this.gamePoints > 75 && this.gamePoints < 100) {
       this.difficulty = 14
-    } else if(this.gamePoints > 100)
+    } else if (this.gamePoints > 100)
       this.difficulty = 8
 
     if (this.framesCounter % this.difficulty === 0) {
@@ -61,11 +60,13 @@ Game.prototype.stop = function () {
 
 Game.prototype.gameOver = function () {
   document.getElementById("game-over").style.display = "flex";
+  document.querySelector(".btn1").style.display = "none"
   this.stop()
   this.resetEvent()
-};
-Game.prototype.resetEvent = function() {
-  window.onkeydown = function(event) {
+}; 
+
+Game.prototype.resetEvent = function () {
+  window.onkeydown = function (event) {
     if (event.key == "Enter") {
       window.location.reload();
     }
@@ -91,9 +92,9 @@ Game.prototype.touchCar = function () {
         this.player.setLife(40)
       } else {
         console.log('obst')
-        this.player.setLife(-20)
+        this.player.setLife(-20);
+        this.drawCollision()
       }
-
       this.obstacles.splice(i, 1);
       return true;
     }
@@ -126,4 +127,13 @@ Game.prototype.move = function () {
   this.player.move()
   this.background.move();
   this.obstacles.forEach(function (obstacle) { obstacle.move(); });
+}
+
+Game.prototype.drawCollision = function() {
+  document.getElementById("angel").classList.add("visible")
+  console.log(document.getElementById("angel"))
+  setTimeout(function(){
+    document.getElementById("angel").classList.remove("visible")
+  },1000)
+
 }

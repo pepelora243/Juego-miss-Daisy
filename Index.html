@@ -18,6 +18,9 @@
 </head>
 
 <body>
+  <div id="angel">
+    <img src="img/deadmiss.png" alt="">
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-sm-3">
@@ -25,17 +28,16 @@
       </div>
       <div class="col-sm-6" id="game-board">
         <canvas id="canvas" width="600" height="700"></canvas>
-        <div id="cover"> <p>Esquivando a Miss Daisy</p></div>
         <div id="game-over"><h2>GAME OVER</h2> <p>Press enter to restart</p> </div>
         <div id="inicio"><h2>ESQUIVANDO A MISS DAISY</h2> <p>Press START</p> </div>
       </div>
       <div class="col-sm-3">
-        <p class="form-control input-sm"></p>
-          <!-- <input type="text" name="score" id="score" class="form-control input-sm" > -->
+        <div class="score">
+          <span></span>
+        </div>
+
       </div>
-      <div id="game-board">
-          
-      </div>
+      
     </div>
   </div>
 </body>
