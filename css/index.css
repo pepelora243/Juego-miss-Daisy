@@ -79,3 +79,8 @@ canvas {
     transition: top 1s linear;
     top: -200px;
   } 
+
+  #angel img {
+      width: 70px;
+      height: auto;
+  }

@@ -26,7 +26,6 @@ Game.prototype.start = function () {
     }
     //niveles
     if (this.gamePoints > 50 && this.gamePoints < 75) {
-      console.log("nivel1")
       this.difficulty = 20
     } else if (this.gamePoints > 75 && this.gamePoints < 100) {
       this.difficulty = 14
