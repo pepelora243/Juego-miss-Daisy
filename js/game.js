@@ -87,12 +87,12 @@ Game.prototype.touchCar = function () {
       this.player.h + this.player.y > this.obstacles[i].y) {
 
       if (this.obstacles[i].powerUp) {
-        console.log('power')
         this.player.setLife(40)
       } else {
-        console.log('obst')
         this.player.setLife(-20);
         this.drawCollision()
+        this.audio = new Audio('/Users/josemarialoraalarcon/Desktop/Juego/sonidos/caraccident.mp3')
+        this.audio.play()
       }
       this.obstacles.splice(i, 1);
       return true;
